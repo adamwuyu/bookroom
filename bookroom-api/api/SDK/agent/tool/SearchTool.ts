@@ -17,6 +17,11 @@ class SearchTool {
         properties: {
             query: { type: "string", description: "搜索内容" },
             timeout: { type: "number", description: "超时时间，单位为毫秒" },
+            search_depth: { type: "string", description: "The depth ofthe search. advanced search is \
+                tailored to retrieve the most relevant sourcesand content snippets for the query, while \
+                basic search provides generic content snippets from each source，取值范围: basic, advanced" },
+            time_range: { type: "string", description: "网页收录的时间范围，week代表一周内收录，\
+                取值范围: none, day, week, month, year" },
         },
         required: ["query"],
     };
