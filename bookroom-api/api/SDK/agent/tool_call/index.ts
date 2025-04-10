@@ -96,6 +96,7 @@ class ToolCallApi {
                 if (selectedTool) {
                     try {
                         this.think.log("执行工具中：", functionName, "\n\n");
+                        this.think.log("使用参数：", JSON.stringify(functionArgs), "\n\n");
                         const result = await selectedTool.execute(functionArgs);
                         this.think.log("执行工具完成：", functionName, "\n\n");
                         this.think.log('工具调用结果：', "\n\n");

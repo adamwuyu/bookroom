@@ -20,13 +20,13 @@ export default class TavilyAPI {
     }
 
     async search(queryParams: any) {
-        const { query, max_results = 5, stream = false, timeout } = queryParams || {};
+        const { query, max_results = 5, stream = false, timeout, search_depth, time_range } = queryParams || {};
         const data = {
             query: query,
             topic: "general",
-            search_depth: "basic",
+            search_depth: search_depth || "basic",
             max_results,
-            time_range: null,
+            time_range: time_range || null,
             days: 3,
             include_answer: false,
             include_raw_content: false,

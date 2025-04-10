@@ -8,7 +8,15 @@ class TimeTool {
     private config: any;
     public name = "time_tool";
     public version = "1.0";
-    public description = "API for curent time  | 查询当前时间接口";
+    public description = `API for curent time  |  查询当前时间接口。当问题中包含相对时间描述（例如"最近"、\n
+    "上周"、"明天"、"过去X天/月/年"等）或者需要基于当前时间进行过滤或计算时，务必先调用此工具获取准确的当前时间。\n
+    示例：\n
+        如果用户询问涉及相对时间的信息搜索，例如"最近一周上映了哪些电影？"，你应该：\n
+        1. 调用<time_tool>获取当前日期。\n
+        2. 根据获取的当前日期，确定"最近一周"的具体日期范围。\n
+        3. 调用<search_tool>，搜索指定日期范围内的上映电影信息。\n
+        4. 整理并输出结果。\n
+    `;
     public parameters = {
         type: "object",
         properties: {
