@@ -1,18 +1,28 @@
 module.exports = {
   root: true, // 作用的目录是根目录
-  extends: "standard", // extends 指定eslint规范
-  plugins: [
-    "html", // 使用eslint-plugin-html
-  ],
-  parser: "babel-eslint",
-  parserOptions: {
-    sourceType: "module", // 按照模块的方式解析
-  },
   env: {
     browser: true, // 开发环境配置表示可以使用浏览器的方法
     node: true, //
     es6: true,
+    jest: true, // Added Jest environment
   },
+  parser: '@typescript-eslint/parser', // Changed parser for TypeScript
+  parserOptions: {
+    ecmaVersion: 2020, // Aligned with tsconfig target
+    sourceType: "module",
+    // project: './tsconfig.json', // Optional: Usually needed for rules requiring type info
+  },
+  plugins: [
+    '@typescript-eslint', // Added TypeScript plugin
+    'jest', // Added Jest plugin
+    // "html", // Removed html plugin as it's less common with TS/Jest setups
+  ],
+  extends: [
+    'eslint:recommended', // Basic ESLint recommendations
+    'plugin:@typescript-eslint/recommended', // TypeScript recommendations
+    'plugin:jest/recommended', // Jest recommendations
+    // "standard", // Removed 'standard' as we are using TS specific rules now
+  ],
   rules: {
     // 重新覆盖 extends: 'standard'的规则
     // 自定义的规则
@@ -28,5 +38,9 @@ module.exports = {
     "no-console": ["error", { allow: ["log", "warn"] }], // 允许使用console.log()
     "arrow-parens": 0,
     "no-new": 0, // 允许使用 new 关键字
+
+    // Example: You might want to disable specific TS rules if needed
+    // '@typescript-eslint/no-unused-vars': 'warn',
+    // '@typescript-eslint/no-explicit-any': 'off',
   },
 };
